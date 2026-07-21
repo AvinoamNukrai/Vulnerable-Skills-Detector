@@ -74,20 +74,37 @@ python -m skill_scanning_crawler run --config config/discovery.example.yaml --re
 
 ## Output layout
 
+All pipeline output is written under `skill-scanning-crawler/data/`. **The
+Part 1 dataset is committed to this repository**, so the discovered skills and
+their manifests are available directly — no run or GitHub token required to
+inspect them. (Run-internal state — `data/.checkpoints/`, `data/.current_run_id`,
+the request cache, and logs — is git-ignored.)
+
 ```text
 data/
 ├── manifests/
-│   ├── repositories.jsonl          # all enriched repos
-│   ├── skills.jsonl                # all downloaded, validated skills
-│   └── rejected_candidates.jsonl  # every rejection with reason
-├── snapshots/
-│   └── <owner>/<repo>/<skill>/<sha8>/
-│       ├── SKILL.md
-│       └── ...
+│   ├── repositories.jsonl                 # all 2,456 enriched repos
+│   ├── repositories_ranked_by_stars.jsonl # repos ranked descending by stars, top-50/100 flagged
+│   ├── skills.jsonl                        # all 735 downloaded, validated skills (one row per skill)
+│   ├── skills_top50.jsonl                  # skills belonging to the top-50 repos
+│   └── rejected_candidates.jsonl           # every rejection with reason
+├── snapshots/                              # ← the skills themselves are saved here
+│   └── <owner>/<repo>/<skill>/<sha8>/      # frozen at the pinned commit SHA (first 8 chars)
+│       ├── SKILL.md                        # skill manifest (validated YAML frontmatter)
+│       └── ...                             # auxiliary files: references/, scripts, README, etc.
 └── reports/
     ├── discovery_summary.json
-    └── dataset_statistics.json
+    ├── dataset_statistics.json
+    ├── ranked_top100_by_stars.md
+    └── part1_summary.json
 ```
+
+**Where the skills are saved:** each skill's files live at
+`skill-scanning-crawler/data/snapshots/<owner>/<repo>/<skill>/<sha8>/`, and every
+skill's metadata (path, commit SHA, content hash, file list, snapshot path) is
+indexed in `data/manifests/skills.jsonl`. Snapshot files are stored byte-for-byte
+(`.gitattributes` marks them `-text`), so they reproduce the original download and
+match the content hashes recorded in the manifest.
 
 ## Tests
 
