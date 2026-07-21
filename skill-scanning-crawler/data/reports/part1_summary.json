@@ -1,0 +1,16 @@
+{
+  "discovered_candidates_enriched": 2456,
+  "preselected_for_scan": 250,
+  "top_n_selected": 50,
+  "selected_star_range": [
+    257916,
+    26155
+  ],
+  "valid_skills_identified_total": 2603,
+  "valid_skills_in_top50": 735,
+  "skills_snapshotted": 735,
+  "skills_complete_snapshots": 724,
+  "skills_incomplete_snapshots": 11,
+  "skills_pending_download": 0,
+  "note": "All 735 top-50 skill directories are downloaded. The 11 'incomplete' snapshots are complete apart from binary/oversized files (fonts, PDFs, tarballs, images) that were intentionally excluded per policy and recorded in each skill's excluded_files; they are not failed downloads."
+}

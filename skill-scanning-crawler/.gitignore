@@ -6,7 +6,10 @@ __pycache__/
 .ruff_cache/
 .mypy_cache/
 .cache/
-data/
+# Track the Part 1 deliverable dataset (manifests, reports, snapshots);
+# keep only run-internal state out of git.
+data/.checkpoints/
+data/.current_run_id
 *.egg-info/
 dist/
 build/

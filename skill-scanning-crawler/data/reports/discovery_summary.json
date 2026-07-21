@@ -1,0 +1,17 @@
+{
+  "run_id": "rerun-topk",
+  "generated_at": "2026-07-20T13:59:26.881753+00:00",
+  "config": {
+    "top_n_repositories": 50,
+    "include_forks": false,
+    "include_archived": false,
+    "strict_validation": true
+  },
+  "discovery": {
+    "total_candidates": 2635,
+    "repositories_enriched": 2456,
+    "repositories_selected": 50,
+    "skills_validated": 735,
+    "total_rejected": 179
+  }
+}
