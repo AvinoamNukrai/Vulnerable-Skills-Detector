@@ -1,0 +1,23 @@
+---
+description: Project scope and non-goals for the MSc skill-scanning crawler.
+globs:
+alwaysApply: true
+---
+
+# Project Scope
+
+This repository builds the discovery and dataset-acquisition pipeline for public agent skills.
+
+The project produces prepared scanner input for Part 2.
+
+It does not implement vulnerability scanning, scanner comparison, maliciousness detection, or manual security annotation.
+
+When implementing features, keep them aligned with:
+
+- `PROJECT_SCOPE.md`
+- `DATA_CONTRACT.md`
+- `CRAWLER_DESIGN.md`
+- `VALIDATION_POLICY.md`
+- `PART2_HANDOFF.md`
+
+Do not expand scope to GitLab, active MCP, scanner execution, or vulnerability classification unless explicitly requested.

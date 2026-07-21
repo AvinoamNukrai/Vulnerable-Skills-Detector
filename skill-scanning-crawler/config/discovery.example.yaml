@@ -1,0 +1,60 @@
+platforms:
+  - github
+
+seed_lists:
+  - name: awesome-skills
+    url: https://awesome-skills.com/
+  # The Antigravity list at https://sickn33.github.io/antigravity-awesome-skills/
+  # is now a JS-rendered SPA (and the old path serves only a meta-refresh stub),
+  # so an HTTP fetch of that page yields no repository links. We instead point at
+  # the list's backing-repo README, which contains the same links as plain
+  # markdown (~200 GitHub URLs) that the text extractor handles reliably.
+  - name: antigravity-awesome-skills
+    url: https://raw.githubusercontent.com/sickn33/agentic-awesome-skills/main/README.md
+
+github:
+  token_env_var: GITHUB_TOKEN
+  include_forks: false
+  include_archived: false
+  top_n_repositories: 50
+  # Only tree-scan/validate/snapshot the top-K enriched repos by stars. The
+  # final output is the top-N by stars anyway, so scanning all ~2.5k discovered
+  # candidates is wasteful and trips GitHub's secondary rate limit. 250 = 5x the
+  # default top_n so repos without a valid skill don't starve the final list.
+  preselect_top_k: 250
+  # Aggregator repos (e.g. an "awesome-skills" list) can vendor thousands of
+  # SKILL.md files; cap how many we validate/snapshot per repo so one repo can't
+  # blow the primary rate limit. 0 = unlimited.
+  max_skills_per_repo: 25
+  max_repository_size_mb: 100
+  max_file_size_mb: 5
+  request_timeout_seconds: 30
+
+# Gentle concurrency: the recursive git/trees endpoint is expensive and triggers
+# GitHub's secondary (abuse) rate limit under bursty parallelism. Combined with
+# preselect_top_k this keeps the crawl well under the secondary limit.
+rate_limits:
+  search_concurrency: 1
+  metadata_concurrency: 5
+  tree_concurrency: 3
+  download_concurrency: 2
+  max_retries: 5
+  backoff_initial_seconds: 1
+  backoff_max_seconds: 60
+
+validation:
+  strict_validation: true
+  include_lenient_in_export: false
+  write_rejected_candidates: true
+
+output:
+  directory: data
+  manifests_directory: data/manifests
+  snapshots_directory: data/snapshots
+  reports_directory: data/reports
+  write_statistics: true
+  deterministic_ordering: true
+
+cache:
+  enabled: true
+  directory: .cache/skill-scanning-crawler

@@ -1,0 +1,41 @@
+---
+description: Rules for deterministic skill validation.
+globs: src/**/*.py, config/validation_policy.yaml, VALIDATION_POLICY.md
+alwaysApply: false
+---
+
+# Skill Validation
+
+Default v1 validation is strict.
+
+A strict valid skill must:
+
+1. contain a file named exactly `SKILL.md`,
+2. parse YAML frontmatter successfully,
+3. contain non-empty `name`,
+4. contain non-empty `description`,
+5. not be only documentation, tutorial, sample, or template content,
+6. be safe to list, hash, and export.
+
+Every candidate must receive a validation status.
+
+Valid statuses:
+
+- `valid_standard`
+- `valid_lenient`
+
+Rejected statuses:
+
+- `invalid_missing_skill_md`
+- `invalid_missing_frontmatter`
+- `invalid_malformed_frontmatter`
+- `invalid_missing_name`
+- `invalid_missing_description`
+- `documentation_only`
+- `example_only`
+- `too_large`
+- `binary_or_unsupported`
+- `repository_unavailable`
+- `undetermined`
+
+Rejected candidates must be written to `rejected_candidates.jsonl`.

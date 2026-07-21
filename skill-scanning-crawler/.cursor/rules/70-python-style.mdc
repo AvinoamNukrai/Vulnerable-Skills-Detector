@@ -1,0 +1,30 @@
+---
+description: Python implementation style for the crawler.
+globs: src/**/*.py, tests/**/*.py
+alwaysApply: false
+---
+
+# Python Style
+
+Use Python 3.11+.
+
+Prefer:
+
+- type hints for public functions,
+- Pydantic models for external records,
+- dataclasses for internal simple structures,
+- small pure functions where practical,
+- explicit exceptions for recoverable pipeline errors,
+- structured logging,
+- dependency injection for clients and configuration,
+- JSONL writer utilities,
+- deterministic sorting.
+
+Avoid:
+
+- global mutable state,
+- hardcoded local paths,
+- hardcoded tokens,
+- broad `except Exception` without logging context,
+- untyped dictionaries crossing module boundaries,
+- hidden network calls in constructors.

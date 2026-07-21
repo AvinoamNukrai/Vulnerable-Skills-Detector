@@ -1,0 +1,14 @@
+{
+  "candidate_id": "github__octocat__skills-demo__docs__SKILL.md",
+  "repository_id": "github__octocat__skills-demo",
+  "platform": "github",
+  "owner": "octocat",
+  "repo": "skills-demo",
+  "path": "docs/SKILL.md",
+  "rejection_status": "documentation_only",
+  "rejection_reason": "Path contains documentation indicator 'docs/'; likely documentation rather than an operational skill directory.",
+  "discovery_sources": ["github_code_search"],
+  "discovery_queries": ["filename:SKILL.md"],
+  "commit_sha": "abc123def456abc123def456abc123def456abc1",
+  "collected_at": "2026-07-16T09:02:00Z"
+}

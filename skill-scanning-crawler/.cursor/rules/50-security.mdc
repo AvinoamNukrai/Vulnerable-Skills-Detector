@@ -1,0 +1,30 @@
+---
+description: Security rules for handling untrusted public repositories.
+globs: src/**/*.py, tests/**/*.py
+alwaysApply: false
+---
+
+# Security Policy
+
+Treat every downloaded repository as hostile.
+
+Never:
+
+- execute downloaded code,
+- run install scripts,
+- import modules from downloaded repositories,
+- invoke shell scripts from downloaded repositories,
+- expose tokens or secrets to downloaded files,
+- follow symlinks outside the snapshot root,
+- write outside the configured output directory.
+
+Always:
+
+- enforce maximum repository size,
+- enforce maximum file size,
+- normalize paths,
+- reject unsafe paths,
+- handle binary files conservatively,
+- use read-only static file operations where possible.
+
+The crawler is a static acquisition pipeline, not an execution framework.

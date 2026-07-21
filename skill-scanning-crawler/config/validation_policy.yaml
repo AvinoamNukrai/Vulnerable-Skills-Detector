@@ -1,0 +1,42 @@
+strict:
+  require_skill_md: true
+  skill_filename: SKILL.md
+  require_yaml_frontmatter: true
+  required_frontmatter_fields:
+    - name
+    - description
+  reject_documentation_candidates: true
+  reject_example_candidates: true
+
+lenient:
+  enabled: false
+  include_in_primary_export: false
+
+path_heuristics:
+  documentation_indicators:
+    - docs/
+    - documentation/
+    - tutorial/
+    - tutorials/
+    - spec/
+    - specification/
+
+  example_indicators:
+    - example
+    - examples
+    - sample
+    - samples
+    - template
+    - templates
+    - demo
+    - demos
+
+size_limits:
+  max_skill_directory_size_mb: 25
+  max_file_size_mb: 5
+
+file_handling:
+  ignore_binary_files: true
+  preserve_relative_paths: true
+  reject_path_traversal: true
+  follow_symlinks: false

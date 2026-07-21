@@ -1,0 +1,23 @@
+{
+  "repository_id": "github__octocat__skills-demo",
+  "platform": "github",
+  "owner": "octocat",
+  "name": "skills-demo",
+  "full_name": "octocat/skills-demo",
+  "url": "https://github.com/octocat/skills-demo",
+  "description": "A demonstration of public agent skills.",
+  "stars": 1234,
+  "forks": 52,
+  "is_fork": false,
+  "is_archived": false,
+  "default_branch": "main",
+  "commit_sha": "abc123def456abc123def456abc123def456abc1",
+  "license": "MIT",
+  "topics": ["agent-skills", "cursor"],
+  "repository_size_kb": 512,
+  "discovery_sources": ["github_code_search"],
+  "discovery_queries": ["filename:SKILL.md"],
+  "skill_count": 3,
+  "selected_for_export": true,
+  "collected_at": "2026-07-16T09:00:00Z"
+}

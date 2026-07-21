@@ -1,0 +1,33 @@
+---
+description: GitHub API, rate-limit, caching, and retry rules.
+globs: src/**/*.py, config/**/*.yaml
+alwaysApply: false
+---
+
+# GitHub API and Rate Limits
+
+All GitHub API access must be designed for rate limits and resumability.
+
+Requirements:
+
+- Use authentication through environment variables.
+- Never hardcode GitHub tokens.
+- Support bounded concurrency.
+- Handle HTTP 403, 429, and 5xx responses explicitly.
+- Respect `Retry-After` when present.
+- Log rate-limit headers when available.
+- Use exponential backoff with jitter.
+- Cache stable responses persistently.
+- Make long runs resumable.
+- Store enough provenance to reproduce queries.
+
+Do not use unbounded `asyncio.gather`.
+
+Separate concurrency limits for:
+
+- search requests,
+- metadata requests,
+- tree requests,
+- download requests.
+
+Do not repeatedly fetch the same repository metadata in a single run.

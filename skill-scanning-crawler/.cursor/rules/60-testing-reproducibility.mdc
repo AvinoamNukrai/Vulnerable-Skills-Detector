@@ -1,0 +1,31 @@
+---
+description: Testing and reproducibility rules.
+globs: src/**/*.py, tests/**/*.py
+alwaysApply: false
+---
+
+# Testing and Reproducibility
+
+Add tests for:
+
+- GitHub URL normalization,
+- configuration loading,
+- search result normalization,
+- `SKILL.md` path detection,
+- YAML frontmatter parsing,
+- validation status classification,
+- content hashing,
+- deduplication,
+- top-N ranking,
+- JSONL manifest writing,
+- output schema validation.
+
+Reproducibility requirements:
+
+- every selected repository must include a commit SHA,
+- every exported skill must include a content hash,
+- every record must include collection timestamp,
+- discovery provenance must be preserved,
+- snapshots must be deterministic for the same commit and config.
+
+Avoid nondeterministic ordering in manifests. Sort records by stable IDs unless ranking order is explicitly required.

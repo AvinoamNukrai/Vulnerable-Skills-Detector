@@ -1,0 +1,45 @@
+---
+description: Architecture rules for the modular crawler.
+globs: src/**/*.py, tests/**/*.py
+alwaysApply: false
+---
+
+# Crawler Architecture
+
+Keep the crawler modular.
+
+Preferred package layout:
+
+```text
+src/skill_scanning_crawler/
+├── discovery/
+├── github_client/
+├── metadata/
+├── validation/
+├── deduplication/
+├── download/
+├── export/
+├── reports/
+└── common/
+```
+
+Do not implement the crawler as one giant script.
+
+Each pipeline stage must have a clear input and output.
+
+Pipeline stages:
+
+1. curated seed ingestion,
+2. GitHub search discovery,
+3. repository identity normalization,
+4. repository metadata enrichment,
+5. tree scanning,
+6. skill location,
+7. validation,
+8. deduplication,
+9. ranking,
+10. snapshot download,
+11. manifest export,
+12. summary reporting.
+
+Prefer typed data models over loose dictionaries at module boundaries.

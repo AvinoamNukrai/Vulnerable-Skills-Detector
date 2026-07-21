@@ -1,0 +1,9 @@
+# Fixture seed list for offline integration tests
+# These are real public repositories that contain agent skill files.
+# The crawler normalises GitHub URLs found anywhere in text content.
+
+https://github.com/anthropics/anthropic-quickstarts
+https://github.com/getcursor/cursor
+https://github.com/BuilderIO/builder
+https://github.com/vercel/ai
+https://github.com/langchain-ai/langchain

@@ -1,0 +1,37 @@
+---
+description: Output schemas and manifest contract rules.
+globs: src/**/*.py, config/output_schema.json, DATA_CONTRACT.md
+alwaysApply: false
+---
+
+# Data Contracts
+
+The crawler must emit stable, documented output records.
+
+Authoritative files:
+
+- `DATA_CONTRACT.md`
+- `config/output_schema.json`
+
+Main manifest files:
+
+- `repositories.jsonl`
+- `skills.jsonl`
+- `rejected_candidates.jsonl`
+
+Any change to output fields requires updating:
+
+1. Pydantic/data models,
+2. `DATA_CONTRACT.md`,
+3. `config/output_schema.json`,
+4. schema validation tests,
+5. any sample fixture records.
+
+Records must include provenance fields:
+
+- discovery source,
+- discovery query if applicable,
+- commit SHA if available,
+- collection timestamp.
+
+Do not silently remove rejected candidates.

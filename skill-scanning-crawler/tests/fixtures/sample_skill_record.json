@@ -1,0 +1,21 @@
+{
+  "skill_id": "github__octocat__skills-demo__skills__pdf-analyzer",
+  "repository_id": "github__octocat__skills-demo",
+  "platform": "github",
+  "owner": "octocat",
+  "repo": "skills-demo",
+  "repository_url": "https://github.com/octocat/skills-demo",
+  "skill_path": "skills/pdf-analyzer",
+  "skill_name": "pdf-analyzer",
+  "description": "Analyzes PDF documents using OCR and summarization.",
+  "validation_status": "valid_standard",
+  "commit_sha": "abc123def456abc123def456abc123def456abc1",
+  "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "file_count": 3,
+  "total_size_bytes": 8192,
+  "files": ["SKILL.md", "scripts/analyze.py", "references/guide.md"],
+  "snapshot_path": "data/snapshots/github__octocat__skills-demo/skills/pdf-analyzer",
+  "snapshot_complete": true,
+  "excluded_files": [],
+  "collected_at": "2026-07-16T09:05:00Z"
+}

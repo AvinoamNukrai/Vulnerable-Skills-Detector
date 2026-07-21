@@ -1,0 +1,30 @@
+code_search_queries:
+  - name: exact_skill_md
+    query: 'filename:SKILL.md'
+
+  - name: skill_md_in_skills_path
+    query: 'filename:SKILL.md path:skills'
+
+  - name: agent_skills_readme
+    query: '"agent skills" path:README.md'
+
+  - name: claude_skills_readme
+    query: '"Claude skills" path:README.md'
+
+  - name: skill_frontmatter_description
+    query: 'filename:SKILL.md "description:"'
+
+repository_search_queries:
+  - name: agent_skills
+    query: 'agent skills'
+
+  - name: claude_skills
+    query: 'claude skills'
+
+  - name: skill_md
+    query: 'SKILL.md'
+
+notes:
+  - GitHub web search and API search may behave differently.
+  - Keep exact query strings in output provenance.
+  - Tune queries empirically during implementation.

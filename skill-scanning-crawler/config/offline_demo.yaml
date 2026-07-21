@@ -1,0 +1,54 @@
+# Offline / small-collection demo config
+#
+# Usage (no token — seed list only):
+#   python -m skill_scanning_crawler run --config config/offline_demo.yaml
+#
+# Usage (with token — live GitHub collection, top 5):
+#   $env:GITHUB_TOKEN = "ghp_..."
+#   python -m skill_scanning_crawler run --config config/offline_demo.yaml
+#
+# The seed list is a local fixture file, so no network calls are needed
+# just to run through all 7 stages.  GitHub search is skipped when
+# GITHUB_TOKEN is not set.
+
+platforms:
+  - github
+
+seed_lists:
+  - name: fixture-seed
+    local_path: tests/fixtures/seed_list.txt
+
+github:
+  token_env_var: GITHUB_TOKEN
+  include_forks: false
+  include_archived: false
+  top_n_repositories: 5
+  max_repository_size_mb: 50
+  max_file_size_mb: 2
+  request_timeout_seconds: 30
+
+rate_limits:
+  search_concurrency: 1
+  metadata_concurrency: 3
+  tree_concurrency: 3
+  download_concurrency: 2
+  max_retries: 3
+  backoff_initial_seconds: 1
+  backoff_max_seconds: 30
+
+validation:
+  strict_validation: true
+  include_lenient_in_export: false
+  write_rejected_candidates: true
+
+output:
+  directory: data
+  manifests_directory: data/manifests
+  snapshots_directory: data/snapshots
+  reports_directory: data/reports
+  write_statistics: true
+  deterministic_ordering: true
+
+cache:
+  enabled: true
+  directory: .cache/skill-scanning-crawler
