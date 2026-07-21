@@ -1,0 +1,5 @@
+# Frozen skill snapshots are exact-byte research artifacts. Never apply
+# end-of-line (CRLF<->LF) or any other text conversion to them, so the bytes
+# stored in git match the original download — and the content hashes recorded
+# in data/manifests/skills.jsonl stay reproducible.
+data/snapshots/** -text
