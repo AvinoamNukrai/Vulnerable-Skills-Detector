@@ -46,7 +46,7 @@ def test_example_config_github_section(config_path: Path) -> None:
 def test_example_config_rate_limits(config_path: Path) -> None:
     cfg = load_config(config_path)
     # Gentle concurrency + a preselect cap keep the crawl under GitHub's
-    # secondary rate limit (see PART1_FIXES.md).
+    # secondary rate limit (see docs/PART1_FIXES.md).
     assert cfg.rate_limits.search_concurrency == 1
     assert cfg.rate_limits.metadata_concurrency == 5
     assert cfg.rate_limits.tree_concurrency == 3

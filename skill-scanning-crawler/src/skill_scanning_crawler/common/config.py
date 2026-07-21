@@ -41,7 +41,7 @@ class GitHubConfig:
     # Because the final output is the top-N repos by stars, tree-scanning every
     # discovered candidate is wasteful and trips GitHub's secondary rate limit;
     # scanning only the top-K by stars (K a generous multiple of N) is far
-    # cheaper and preserves the ranked result. See PART1_FIXES.md.
+    # cheaper and preserves the ranked result. See docs/PART1_FIXES.md.
     preselect_top_k: int = 0
     # Cap SKILL.md candidates kept per repository. Aggregator/collection repos
     # can contain thousands of SKILL.md files; validating+snapshotting all of
